@@ -1,0 +1,85 @@
+extends basic.pug
+block header
+    link(rel="stylesheet", href="/css/control.css")
+block content
+    .container.mb-4
+        .row
+            .col-sm-12 
+                h3.mt-3 ¡Bienvenido #{rol}!
+        .col-sm-12
+        .row
+            .col-sm-12
+                div(class="card bg-dark text-white")
+                    img(class="card-img", src="/css/bocas-toro-panama.jpg", alt="Card image")
+                    div(class="card-img-overlay")
+                        h4.card-title Control de las actividades en el sistema
+                        a.btn.btn-primary(href='/admin/adminOfertas', role='button').btn.btn-warning.btn-lgbtn-block Insertar Oferta
+                        .card-body
+                            div(class='pre-scrollable')
+                                table.table.table-hover.table-light.mb-0
+                                        thead.thead-dark
+                                            tr
+                                                th(scope="col") N°
+                                                th(scope="col") Imagen-Oferta
+                                                th(scope="col") Oferta
+                                                th(scope="col") Descripcion
+                                                th(scope="col") Provincia
+                                                th(scope="col") Telefono
+                                                th(scope="col") Correo
+                                                th(scope="col") Fecha de Publicación
+                                                th(scope="col") Estado
+                                                th(scope="col") Precio
+                                                th(scope="col") Actualizar
+                                                th(scope="col") Eliminar
+                                        tbody
+                                            for lofert, i in oferta 
+                                                    tr
+                                                        form(action='admin/controlof/actualizarof', method='POST')
+                                                            td.bg-secondary.text-light= i+1
+                                                            td
+                                                                if (lofert.imagenes || !lofert.imagenes[0]=="") 
+                                                                    img(src="/"+lofert.imagenes[0], alt="Imagen actividad", srcset="", class='img-thumbnail')
+                                                                else
+                                                                    img(src="/css/logo.png", alt="Imagen actividad", srcset="", class='img-thumbnail')
+                                                            td #{lofert.nombreofer}
+                                                                if (rol === 'compania')
+                                                                    input#oferta(type='text' name='oferta' value=lofert.nombreofer)
+                                                            
+                                                            td #{lofert.descripcion}
+                                                                if (rol === 'compania')
+                                                                    input#descrip(type='text' name='descrip' value=lofert.descripcion)
+                                                            td #{lofert.provincia}
+                                                                if (rol === 'compania')
+                                                                    select(class='form-control', name='provincias' value=lofert.provincia)
+                                                                        option(value='bocas') Bocas del Toro
+                                                                        option(value='cocle') Coclé
+                                                                        option(value='colon') Colón
+                                                                        option(value='chiriqui') Chiriquí
+                                                                        option(value='darien') Darién
+                                                                        option(value='herrera') Herrera
+                                                                        option(value='lossantos') Los Santos 
+                                                                        option(value='panama') Panamá
+                                                                        option(value='veraguas') Veraguas
+                                                                        option(value='gunayala') Guna Yala     
+                                                            td #{lofert.telefono}
+                                                                if (rol === 'compania')
+                                                                    input#telefono(type='text' name='telefono' value=lofert.telefono)
+                                                            td #{lofert.correo}
+                                                                if (rol === 'compania')
+                                                                    input#correo(type='text' name='correo' value=lofert.correo)
+                                                            td #{lofert.fecha_pub}
+                                                            td #{lofert.estado}
+                                                                select#sexo(name="activo")
+                                                                    option(value="active") Activo
+                                                                    option(value="inactive") Inactivo
+                                                            
+                                                            td #{lofert.precio}
+                                                                if (rol === 'compania')
+                                                                    input#precio(type='text' name='precio', required) 
+                                                            td
+                                                                input(type='hidden', value=lofert._id, name='id')
+                                                                input(type='submit',value='Actualizar').btn.btn-success
+                                                        form(action='admin/controlof/eliminarof', method='POST')
+                                                            input(type='hidden', value=lofert._id, name='id')
+                                                            td
+                                                                input(type='submit',value='Borrar').btn.btn-danger

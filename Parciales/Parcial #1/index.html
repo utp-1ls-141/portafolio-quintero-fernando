@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parcial #2</title>
+    <link rel="stylesheet" href="./static/Vendor/Bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">Nicole Quintero & Fernando Quintero </a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Parcial#2: 3 problemas + 1 problema bonus </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div style="height: 20px;"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <h2>Asunto #1: </h2>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <h2>Asunto #2: </h2>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <h2>Asunto #3: </h2>
+            </div>
+        </div>
+
+        <form>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="card shadow-lg mt-3 rounded ">
+                        <div class="card-header bg-info">
+                            <h4 class="text-white"> Cadenas isomorficas:</h4>
+
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Leer 3 textbox, t1, t2, t3, comprobar si los 3 textos son isomorficos:</h5>
+                            <p class="card-text">Cadena 1:</p>
+                            <div class="form-group">
+                                <input type="text" id="cadena1" class="form-control" placeholder="Escriba una cadena cualquiera" required tabindex="1">
+                            </div>
+                            <p class="card-text">Cadena 2:</p>
+                            <div class="form-group">
+                                <input type="text" id="cadena2" class="form-control" placeholder="Escriba una cadena cualquiera" required tabindex="2">
+                            </div>
+                            <p class="card-text">Cadena 3:</p>
+                            <div class="form-group">
+                                <input type="text" id="cadena3" class="form-control" placeholder="Escriba una cadena cualquiera" required tabindex="3">
+
+                                <p class="text-danger" id="error"></p>
+                                <br>
+                                <input type="button" value="Verificar" class="form-control btn-primary" onclick="es_isomorfica()" tabindex="4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="card shadow-lg mt-3 rounded">
+                        <div class="card-header bg-info">
+                            <h4 class="text-white"> Construcción de matriz</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Leer 1 textbox, "n", generar una matrix "NxN", donde la diagonal principal sea multiplo de "23" y la diagonal secundaria sea un numero primo:</h5>
+                            <p class="card-text">Número:</p>
+                            <div class="form-group">
+                                <input type="text" id="num" class="form-control" placeholder="Escriba un número entero cualquiera" required tabindex="5">
+                            </div>
+                            <p class="text-danger" id="error2"></p>
+                            <br>
+                            <input type="button" value="Generar" class="form-control btn-primary" onclick="MatrixDiagP()" tabindex="5">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="card shadow-lg mt-3 rounded">
+                        <div class="card-header bg-info">
+                            <h4 class="text-white"> Números palindromos:</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Leer 1 textbox, "número", calcular si ese número es "Doblemente Palindromo":</h5>
+                            <p class="card-text">Numero:</p>
+                            <div class="form-group">
+                                <input type="text" id="palindromo" class="form-control" placeholder="Escriba un número entero cualquiera" required tabindex="6">
+                            </div>
+                            <p class="text-danger" id="error2"></p>
+                            <br>
+                            <input type="button" value="Verificar" class="form-control btn-primary" onclick="palin_dromo()" tabindex="7">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"> Resultado: </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-dark" id="info"></p>
+                                <br>
+                                <p id="matriz"></p>
+                                <p class="font-weight-bold text-success" id="esmorf"></mark>
+                                <p class="font-weight-bold text-danger" id="nomorf"></mark>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">¡Listo!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                    <button class="btn btn-success mt-3" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="width: 100%;">
+                        <i>Problema Bonus</i>
+                    </button>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card shadow-lg mt-3 rounded ">
+                            <div class="card-header bg-success">
+                                <h4 class="text-white"> ¿Números Primos?</h4>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Leer un número, rotarlo y verificar si todas sus variantes son números primos:</h5>
+                                <p class="card-text">Número:</p>
+                                <div class="form-group">
+                                    <input type="text" id="bono" class="form-control" placeholder="Escriba un numero cualquiera" required tabindex="3">
+
+                                    <p class="text-danger" id="error"></p>
+                                    <br>
+                                    <input type="button" value="Verificar" class="form-control btn-success" onclick="primos()" tabindex="8">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="height: 50px;"></div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        <script src="./static/Vendor/jquery/jquery-3.3.1.min.js"></script>
+        <script src="./static/Vendor/Bootstrap/js/bootstrap.min.js"></script>
+        <script src="./static/js/isomorphic.js"></script>
+        <script src="./static/js/matrix.js"></script>
+        <script src="./static/js/palindromo.js"></script>
+        <script src="./static/js/bonus.js"></script>
+</body>
+
+</html>

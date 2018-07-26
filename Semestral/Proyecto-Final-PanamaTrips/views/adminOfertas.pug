@@ -1,0 +1,69 @@
+extends basic.pug
+block content
+    .container.mt-3
+        .row
+            div(class='col-sm-12')
+                h3 ¡Agrega tu Oferta!
+            div(class='d-none d-lg-block col-lg-4 col-xl-3')                
+                img(src="/css/logo.png", alt="logo", height="250", width='100%')
+            div(class='col-sm-12 col-md-12 col-lg-8 col-xl-9')
+                .card.shadow-lg.mb-3
+                    .card-header 
+                        span(class='fa fa-tags fa-1x') ¡Ofertas!
+                    .card-body
+                        .container
+                            .row 
+                                h3.col-sm-12 PanamaTrips!
+                            form(action="/insertar_ofert", method='post', enctype='multipart/form-data')
+                                div(class='form-group row') 
+                                    label(class='col-sm-2 col-form-label') Seleccione las imagenes:
+                                    .col-sm-10
+                                        input#subirimagen(type='file', name='imagen[]', multiple, onchange='archivos()', required)
+                                        p.text-success(id='buenArchivo')
+                                        p.text-danger(id='malArchivo')
+                                div(class='form-group row') 
+                                    label(class='col-sm-2 col-form-label') Oferta:
+                                    .col-sm-10
+                                        input(type="text", class='form-control', name='nombreof', placeholder='Nombre de su Oferta', required)
+                                div(class='form-group row') 
+                                    label(class='col-sm-2 col-form-label') Descripción:
+                                    .col-sm-10
+                                        textarea#exampleFormControlTextarea1.form-control(rows='1', name="descrip", required)
+                                div(class='form-group row') 
+                                    label(class='col-sm-2 col-form-label', for='provincias') Provincia:
+                                    .col-sm-10
+                                        select(class='form-control', name='provincias', required)
+                                            option(value='bocas') Bocas del Toro
+                                            option(value='cocle') Coclé
+                                            option(value='colon') Colón
+                                            option(value='chiriqui') Chiriquí
+                                            option(value='darien') Darién
+                                            option(value='herrera') Herrera
+                                            option(value='lossantos') Los Santos 
+                                            option(value='panama') Panamá
+                                            option(value='veraguas') Veraguas
+                                            option(value='gunalaya') Guna Yala
+
+                                div(class='form-group row') 
+                                    label(class='col-sm-2 col-form-label') Tel. de Contacto:
+                                    .col-sm-10
+                                        input(type="text", class='form-control', name='tel', placeholder='8556677', required)
+                                
+                                div(class='form-group row') 
+                                    label(class='col-sm-2 col-form-label', for='correoc') Correo:
+                                    .col-sm-10
+                                        input(type='text', class='form-control', name="correo", required)
+                                
+                                div(class='form-group row has-feedback')
+                                    label(class='col-sm-2 col-form-label', for='contrasena') Precios:
+                                    .col-sm-5
+                                        input(type='text', name='precio', class='form-control pass', placeholder='00.00', required)
+                                    input(type='text ',value='Precio por Persona',readonly ,name='prexper', class='col-sm-5 form-control pass')
+                                
+                                div(class='form-group row')
+                                    .col-sm-12.d-flex.justify-content-end
+                                        input.btn.btn-primary.btn-lg.active(type='submit', value='Guardar Datos')
+                                    .col-sm-10
+                                        a.btn.btn-primary(href='/admin/control', role='button').btn.btn-info Regresar al Panel de control                       
+block scripts 
+    script(src="/js/acciones.js")

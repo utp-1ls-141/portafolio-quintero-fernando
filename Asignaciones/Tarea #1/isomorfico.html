@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea #1: Cadenas Isomorficas</title>
+    <link rel="stylesheet" href="./Vendor/Bootstrap/css/bootstrap-grid.min.css" type="text/css">
+    <link rel="stylesheet" href="./Vendor/Bootstrap/css/bootstrap-reboot.min.css"  type="text/css">
+    <link rel="stylesheet" href="./Vendor/Bootstrap/css/bootstrap.min.css"  type="text/css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="isomorfico.html">Fernando Quintero</a>
+    </nav>
+    <div class="container">  
+        <div class="row">
+            <div style="height: 20px;"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">   
+            <h2>¿Es mi cadena isomorphica?</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">   
+            <h5>¡Descubralo Aquí!</h5>
+            </div>
+        </div>
+        <form>
+            <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="width: 100%;">
+                                        ¿Que es una cadena isomorfica?
+                                      </button>
+                                    </p>
+                                    <div class="collapse" id="collapseExample">
+                                      <div class="card card-body">
+                                            <blockquote class="blockquote">
+                                                    <p class="mb-0" style="font-size: 14px;">Dadas dos cadenas se puede decir que son isomorfica si los caracteres en la primera se pueden reemplazar para obtener obtener la segunda. <br>
+                                                        Todas las ocurrencias de un carácter deben ser reemplazadas por otro carácter mientras se preserva el orden de los caracteres. No se pueden asignar dos caracteres al mismo carácter, pero un carácter puede asignarse a sí mismo. <br>
+                                                        <em> Ejemplo: Las Cadenas 'Egg' y 'Add', la 'E' de la primera cadena por la 'A' de la segunda, la 'g' de la primera por la 'd' de la segunda que se repite.</em>
+                                                    </p>
+                                                </blockquote>
+                                                <footer class="blockquote-footer"><a href="https://leetcode.com/problems/isomorphic-strings/description/"> Pagina de referencia </a><cite title="Source Title"> - Isomorphic Strings - LeetCode</cite></footer>
+                                      </div>
+                                    </div>
+                        </div>
+                    </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                    <div class="card shadow-lg mt-3 rounded">
+                        <div class="card-header">
+                            <h4> Descubra si su cadena es isomorfica:</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Introduzca 2 cadenas para comparar:</h5>
+                            <p class="card-text">Cadena 1:</p>
+                            <div class="form-group">
+                                <input type="text" id="cadena1" class="form-control" placeholder="Escriba una cadena cualquiera" required tabindex="1">
+                            </div>
+                            <p class="card-text">Cadena 2:</p>
+                            <div class="form-group">
+                                <input type="text" id="cadena2" class="form-control" placeholder="Escriba una cadena cualquiera" required tabindex="2">
+                                <p class="text-danger" id="error"></p>
+                                <br>
+                                <input type="button" value="Verificar" class="form-control btn-primary"  onclick="es_isomorfica()" tabindex="3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title"> Resultado: </h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p class="text-dark" id="info"></p> <br>
+                              <mark class="font-weight-bold text-success" id="esmorf"></mark>
+                              <mark class="font-weight-bold text-danger" id="nomorf"></mark>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">¡Listo!</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            </div>
+            
+        </form>
+    </div>
+    <script src="./Vendor/jquery/jquery-3.3.1.min.js"></script> <!-- Siempre primero que el bootstrap -->
+    <script src="./Vendor/Bootstrap/js/bootstrap.min.js"></script>
+    <script src="./morphic.js"></script>
+</body>
+</html>

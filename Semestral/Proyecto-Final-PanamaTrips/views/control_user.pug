@@ -1,0 +1,52 @@
+extends basic.pug
+block header
+    link(rel="stylesheet", href="/css/control.css")
+block content
+    .container.mb-4
+        .row
+            .col-sm-12 
+                h3.mt-3 ¡Bienvenido #{rol}!
+        .col-sm-12
+        .row
+            .col-sm-12
+                div(class="card bg-dark text-white")
+                    img(class="card-img", src="/css/bocas-toro-panama.jpg", alt="Card image")
+                    div(class="card-img-overlay")
+                        h4.card-title Control de los Usuarios
+                        .card-body
+                            div(class='pre-scrollable')
+                                table.table.table-hover.table-light.mb-0
+                                        thead.thead-dark
+                                            tr
+                                                th(scope="col") N°
+                                                th(scope="col") Perfil-Usuario
+                                                th(scope="col") Nombre
+                                                th(scope="col") Apeliido
+                                                th(scope="col") Email
+                                                th(scope="col") Provincia
+                                                th(scope="col") Rol
+                                                th(scope="col") Actualizar
+                                                th(scope="col") Eliminar
+                                        tbody
+                                            for lista, n in usuario
+                                                    tr
+                                                        form(action='admin/control/actualizaruser', method='post')     
+                                                            td.bg-secondary.text-light= n+1
+                                                            td 
+                                                                img(src="/"+lista.imagenperfil, alt="Perfil del usuario", srcset="", class='img-thumbnail')
+                                                            td #{lista.nombre}
+                                                            td #{lista.apellido}
+                                                            td #{lista.email}
+                                                            td #{lista.provincia}
+                                                            td #{lista.rol}
+                                                                select#rol(name="rol")
+                                                                    option(value="usuario") Usuario
+                                                                    option(value="compania") Compañia
+                                                                    option(value="administrador") Administrador
+                                                            td
+                                                                input(type='hidden', value=lista._id, name='id')
+                                                                input(type='submit',value='Actualizar').btn.btn-success
+                                                        form(action='admin/control/eliminaruser', method='POST')
+                                                            input(type='hidden', value=lista._id, name='id')
+                                                            td
+                                                                input(type='submit',value='Borrar').btn.btn-danger

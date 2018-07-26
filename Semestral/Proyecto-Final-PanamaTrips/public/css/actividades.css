@@ -1,0 +1,70 @@
+.carousel-inner{
+    border-radius: 15px;
+}
+.visual{
+    width: 100%;
+    height: 400px;
+    -webkit-box-shadow: -5px 10px 31px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: -5px 10px 31px -8px rgba(0,0,0,0.75);
+    box-shadow: -5px 10px 31px -8px rgba(0,0,0,0.75);
+}
+.miniatura{
+    width: 85px;
+    height: 80px;
+}
+.info{
+    -webkit-box-shadow: -5px 10px 31px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: -5px 10px 31px -8px rgba(0,0,0,0.75);
+    box-shadow: -5px 10px 31px -8px rgba(0,0,0,0.75);
+    border-radius: 15px;
+}
+.card-header{
+    color: white;
+    background: linear-gradient(to left, #20d63e,  rgb(104, 104, 226));
+    font-weight: 700;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    font-style: italic;
+}
+span{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.similares-top{
+    color: white;
+    background: linear-gradient(to left, #20d63e,  rgb(104, 104, 226));
+    font-weight: 700;
+    border-radius: 15px 15px 0px 0px;
+}
+.card-img-top{
+    height: 250px;
+    width: 100%;
+}
+#carousel .list-inline {
+    white-space:nowrap;
+    overflow-x: scroll;
+}
+
+#carousel .carousel-indicators {
+    position: static;
+    left: initial;
+    width: initial;
+    margin-left: initial;
+}
+
+#carousel .carousel-indicators > li {
+    width: initial;
+    height: initial;
+    text-indent: initial;
+}
+
+#carousel .carousel-indicators > li.active img {
+    opacity: 0.7;
+}
+.no-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }

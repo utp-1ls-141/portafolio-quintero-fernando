@@ -1,0 +1,125 @@
+doctype html
+html
+    head
+        title PanamaTrips!
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1")
+        link(rel="stylesheet", href="/bootstrap/dist/css/bootstrap.min.css")
+        link(rel="stylesheet", href="/css/basic.css")
+        link(rel="stylesheet", href="/popups/css/popupS.min.css")
+        link(rel="icon", type="image/png", href="/favicon/favicon-32x32.png", sizes="32x32")
+        link(rel="icon", type="image/png", href="/favicon/favicon-16x16.png", sizes="16x16")
+        link(rel='icon', href="/favicon/favicon.ico", type="image/x-icon")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        block header
+    body
+        div(class="d-flex flex-column")
+            nav(class="navbar navbar-expand-lg navbar-dark shadow barra")
+                .container
+                    a(href='/', class="navbar-brand")
+                        img(src="/css/logopanama.png", alt="Logo", width="120px",  height="55px") 
+                        
+                    button(class="navbar-toggler", type="button", data-toggle="collapse", data-target="#barra", aria-controls="barra", aria-expanded="false", aria-label="Toggle navigation")
+                        span(class="navbar-toggler-icon")
+                    div(class="collapse navbar-collapse", id="barra")
+                        ul(class="navbar-nav mr-auto")
+                            li(class="nav-item active")
+                                a(href="/", class="nav-link")
+                                    i(class="fa fa-home") 
+                                        span.ml-1 Inicio      
+                            li(class="nav-item dropdown")
+                                a(href="#", class="nav-link dropdown-toggle", id="navbarDropdownMenuLink", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                                    i(class="fa fa-plane") 
+                                        span.ml-1 Actividades
+                                div(class='dropdown-menu', aria-labelledby="navbarDropdownMenuLink")
+                                    a(class='dropdown-item', href='/provincias') Todas las provincias
+                                    div.dropdown-divider
+                                    a(class='dropdown-item', href='/actividad/bocas') Bocas del Toro        
+                                    a(class='dropdown-item', href='/actividad/cocle') Coclé        
+                                    a(class='dropdown-item', href='/actividad/colon') Colón        
+                                    a(class='dropdown-item', href='/actividad/chiriqui') Chiriquí        
+                                    a(class='dropdown-item', href='/actividad/darien') Darién      
+                                    a(class='dropdown-item', href='/actividad/herrera') Herrera        
+                                    a(class='dropdown-item', href='/actividad/lossantos') Los Santos       
+                                    a(class='dropdown-item', href='/actividad/panama') Panamá        
+                                    a(class='dropdown-item', href='/actividad/veraguas') Veraguas        
+                                    a(class='dropdown-item', href='/actividad/gunayala') Guna Yala
+                            
+                            if login
+                                if (rol === 'admin' || rol === 'compania')
+                                    li(class="nav-item dropdown")
+                                        a(href="#", class="nav-link dropdown-toggle", id="navbarDropdownMenuLink", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                                            i(class="fa fa-list-alt") 
+                                                span.ml-1 Control
+                                        div(class='dropdown-menu', aria-labelledby="navbarDropdownMenuLink")
+                                            if (rol === 'admin')
+                                                a(class='dropdown-item', href='/admin/control') Control de Actividades
+                                                a(class='dropdown-item', href='/admin/controlof') Control de Ofertas 
+                                                a(class='dropdown-item', href='/admin/controluser') Control de Usuarios
+                                                a(class='dropdown-item', href='/admin/solicitudes') Control de solicitudes
+                                            if (rol === 'compania')
+                                                a(class='dropdown-item', href='/admin/controlofcompania') Control de Ofertas       
+                                                a(class='dropdown-item', href='/admin/controlcompania') Control de Actividades
+                            li(class="nav-item")
+                                a(href="/ofertas", class="nav-link")
+                                    i(class="fa fa-tag") 
+                                        span.ml-1 Ofertas
+                            li(class="nav-item")
+                                a(href='/sobreNosotros', class="nav-link")
+                                    i(class="fa fa-users") 
+                                        span.ml-1 Sobre Nosotros
+                            //esto es para que si esta logueado le salga cerrar sesion sino no
+                    if login
+
+                        a(href='/perfil', class="btn btn-primary rounded") 
+                            img(src='/'+imagen, alt="", srcset="", width='32px', height='32x')
+                            p #{nombre}
+                        a(href='/logout', class="btn btn-primary ml-2 rounded") Cerrar Sesión
+                    else 
+                        a(href='/login', class="btn btn-primary rounded") Iniciar Sesión
+                        a(href='/registro', class="btn btn-primary ml-2 rounded") Registrate
+
+            div(class="container-fluid no-padding cuerpo")
+            block content
+
+            footer(class="page-footer pie font-small pt-4 w-100")
+                div(class="container text-center text-md-left")
+                    .row
+                        div(class="col-md-6 mt-md-0 mt-3")
+                            h5.text-uppercase PanamaTrips!
+                            p 
+                            |Direccion de las oficinas: UTP <br>
+                            |Correo: panamatrips@gob.pa <br>
+                            |Telefonos: 230-0000 <br>
+                        hr(class="clearfix w-100 d-md-none pb-3")
+                        div(class="col-md-6 mb-md-0 mb-3")
+                            h5.text-uppercase Empresa
+                            ul.list
+                                li 
+                                    a(href="#") Terminos y Condiciones
+                                li 
+                                    a(href="/sobreNosotros") Sobre Nosotros
+                .container
+                    div(class="row mt-4")
+                        div(class="col-sm-12")
+                            div(class="d-flex justify-content-center")
+                                h5 ¡Nuestras redes sociales!
+                        div(class="col-sm-12")
+                            div(class="mb-4 d-flex justify-content-center")
+                                a(class="fb-ic")
+                                    i(class="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x")
+                                a(class="tw-ic")
+                                    i(class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x")
+                                a(class="li-ic")
+                                    i(class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x")
+                                a(class="ins-ic")
+                                    i(class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x") 
+                div(class="footer-copyright text-center py-1")
+                    p @2018 Copyright:
+                    a(href="#") PanamaTrips.com
+                script(src="/jquery/dist/jquery.min.js")
+                script(src="/bootstrap/dist/js/bootstrap.min.js")
+                script(src="/popups/dist/popupS.js")
+                block scripts 
+

@@ -1,0 +1,45 @@
+extends basic.pug
+block header
+    link(rel="stylesheet", href="/css/inicio.css")
+    link(rel="stylesheet", href="/css/registro.css")
+    link(rel="stylesheet", href="/css/perfil.css")
+block content
+    .container.mt-3
+        .row
+            div(class='col-sm-12 mb-2')
+                h3 ¡Se parte de nuestra comunidad de viajeros!
+        .row
+            .col-sm-12.d-flex.justify-content-center.mb-4
+                img.img-responsive(src='/css/logo.png', class='visual rounded-circle perfil')
+                              
+            div(class='col-sm-12 col-md-12 col-lg-8 col-xl-12')
+                .card.shadow-lg.mb-3
+                    .card-header 
+                        span(class='fa fa-users fa-1x') ¿Quienes Somos?
+                    .card-body
+                        .container
+                            .row.mt-4
+                                h3.col-sm-10 PanamaTrips!
+                                h6.col-sm-10 Descubre Panamá
+                            .row.mt-4    
+                                h3.col-sm-10 Misión: 
+                                p
+                                h6.col-sm-20 Nuestra misión como empresa, es dar a conocer los bellos lugares de la república de Panamá, tener un sitio donde las personas busquen y conozcan los diferentes lugares que quieran pasar con familia y amigos haciendo algo diferente y divertido.
+                            .row.mt-4
+                                h3.col-sm-10 Visión:
+                                p
+                                h6.col-sm-20 liderar el mercado del turismo interno en Panamá, teniendo la mejor calidad de otros servicios empresariales de turismo, en el que nuestros clientes se sientan cómodos al navegar en nuestro sitio.
+                            .row.mt-4
+                                .col-sm-12.d-flex.justify-content-center
+                                     img(src="/css/IMG_5906.JPG", alt="Foto de grupo", srcset="", class='nosotros', width='350px', height='300px')
+                    .card-header
+                        .row
+                            .col-sm-12.d-flex.justify-content-center
+                                h6 Por: Nicole Quintero, Fernando Quintero y Maureth Samudio
+                               
+
+                                
+    
+                                
+block scripts 
+    script(src="/js/acciones.js")

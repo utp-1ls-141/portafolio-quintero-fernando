@@ -1,0 +1,126 @@
+extends basic.pug
+block header
+ link(rel="stylesheet", href="/css/actividades.css")
+block content
+      .container
+        .row(class="mt-2")
+            div(class="col-sm-12 col-md-12 col-lg-4 col-xl-4")
+               a(href="/actividad/"+actividad.provincia , class='btn btn-info w-100') 
+                i(class="fa fa-arrow-circle-left") 
+                  span Regresar a las actividades
+        .row(class="mt-1 mb-4")    
+            div(id='slider', class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mb-2")
+              if (actividad.imagenes && !actividad.imagenes[0]=="")
+                #carousel.carousel
+                  .carousel-inner
+                      each imag, n in actividad.imagenes
+                        if n == 0
+                          .active.item.carousel-item(data-slide-number=n)
+                            img.img-responsive.visual(src='/'+imag)
+                        else
+                          .item.carousel-item(data-slide-number=n)
+                            img.img-responsive.visual(src='/'+imag)
+                          div(class='d-flex justify-content-center')
+                            a.carousel-control.left.pt-3(href="#carousel", data-slide="prev")
+                              i.fa.fa-chevron-left.fa-2x
+                            a.carousel-control.right.pt-3(href="#carousel", data-slide="next")
+                              i.fa.fa-chevron-right.fa-2x
+                      
+                      ul.carousel-indicators.list-inline
+                        each imag2, n in actividad.imagenes
+                          if n == 0
+                            li.list-inline-item.active
+                              a#carousel-selector-0.selected(data-slide-to=n, data-target="#carousel")
+                                img.img-responsive.miniatura(src='/'+imag2)
+                          else
+                            li.list-inline-item
+                              a#carousel-selector-0.selected(data-slide-to=n, data-target="#carousel")
+                                img.img-responsive.miniatura(src='/'+imag2)
+              else
+                img.img-responsive(src='/css/logo.png', class='visual')
+            div(class="col-sm-12 col-md-12 col-lg-8 col-xl-8")
+              form(action="/pago", method="post")
+                .card.info
+                  .card-header
+                    .container 
+                      .row
+                        div(class='col-sm-12 col-md-12 col-lg-7 col-xl-7')
+                          h3.mt-1 #{actividad.nombreact} 
+                          h6 Provincia: 
+                            small #{actividad.provincia}
+                          h6 Fecha de publicación: 
+                            small #{actividad.fecha_pub}
+                        div(class='col-sm-12 col-md-12 col-lg-5 col-xl-5')
+                              input(name="usuario" type="hidden" value=id)
+                              input(name="actividad" type="hidden" value=actividad._id)
+                              //input(name="compania" type="hidden" value=actividad.compania)
+                              input.float-right.btn.btn-primary.btn-lg.active(type="submit",value='¡Reserva Ya!', aria-pressed='true')
+                  .card-body
+                        h5 Descripción:
+                        p.ml-2 #{actividad.descripcion}
+                        hr
+                        h5 Escoga sus fecha:
+                        p.ml-2 Inicio:
+                        input(name='finicio' , type='date', required)
+                        hr
+                        p.ml-2 Salida:
+                        input(name='fsalida', type='date', required)
+                        hr
+                        p.ml-2 Personas:
+                        input(type="number", name="cantidad", min='1', value='1', required)
+                        hr
+                        if (actividad.habdescripcion)
+                            h5 Habitaciones:
+                            p.ml-2 #{actividad.habdescripcion}
+                            hr
+                        h5 Precio:
+                        p.ml-2 #{actividad.precio}, (#{actividad.secprecio})
+                        hr
+                        if (actividad.contacto || actividad.correo)
+                          if (!actividad.contacto)
+                            h5 Contacto:
+                            p.ml-2 Número de contacto: No proporcionado por el autor
+                            p.ml-2 Correo: #{actividad.correo}
+                            hr
+                          else if (!actividad.correo)
+                            h5 Contacto:
+                            p.ml-2 Número de contacto: #{actividad.contacto} 
+                            p.ml-2 Correo: No proporcionado por el autor
+                            hr
+                          else
+                            h5 Contacto:
+                            p.ml-2 Número de contacto: #{actividad.contacto}
+                            p.ml-2 Correo: #{actividad.correo}
+                            hr
+                        h5 Informacion adicional:
+                        if (actividad.infoadicional)
+                          p.ml-2 #{actividad.infoadicional}
+                        else
+                          h5 Contacto:
+                          p.ml-2 Número de contacto: #{actividad.contacto}
+                          p.ml-2 Correo: #{actividad.correo}
+                          hr
+                        h5 Informacion adicional:
+                        if (actividad.infoadicional)
+                          p.ml-2 #{actividad.infoadicional}
+                        else
+                          p.ml-2 No hay mas información adicional disponible
+        .row
+          div(class="col-sm-12 no-padding")
+            .d-flex.justify-content-center.similares-top
+              h3.mt-2.mb
+            .card-group
+              each simi, i in similares
+                div(class="col-sm-12 col-md-4 no-padding")
+                  .card
+                    if (simi.imagenes && !simi.imagenes[0]=="")
+                      img(src='/'+simi.imagenes[0], alt="Imagen"+ i, class="card-img-top")
+                    else
+                      img(src='/css/logo.png', alt="Imagen"+ i, class="card-img-top")
+                    .card-body
+                      h4.card-title #{simi.nombreact}
+                      h6.card-text Provincia: #{simi.provincia}
+                      p.card-text #{simi.descripcion}
+                      a(href="/actividades/"+simi._id, class="black-text d-flex justify-content-end")
+                        h6 Ver actividad
+                          i(class="fa fa-angle-double-right")
